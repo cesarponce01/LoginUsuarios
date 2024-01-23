@@ -3,6 +3,24 @@ import java.net.DatagramSocket
 import java.net.InetAddress
 import java.util.*
 
+fun main() {
+    val sc = Scanner(System.`in`)
+
+    println("Opción a elegir (registro, login): ")
+    val opcion = sc.nextLine()
+
+    when (opcion.uppercase(Locale.getDefault())) {
+        "REGISTRO" -> {
+            realizarRegistro()
+        }
+        "LOGIN" -> {
+            loginCliente()
+        }
+        else -> {
+            println("Opción no válida")
+        }
+    }
+}
 fun dataGrama(solicitud:String, email:String, pwd: String):String{
     val dataGramaEnviar = DatagramSocket()
     val mensaje = "$solicitud;$email;$pwd"
@@ -34,12 +52,12 @@ fun realizarRegistro() {
 
     println("Ingrese su contraseña: ")
     val pwd = sc.nextLine()
-    val texto= Otro.dataGrama("registro", email, pwd)
+    val texto= dataGrama("registro", email, pwd)
 
     if (texto == "OK") {
-        println("Usuario registrado")
+        println("*** Usuario registrado ***")
     } else {
-        println("El usuario no se ha podido registrar")
+        println("*** Error ya existe este usuario ***")
     }
 }
 
@@ -61,7 +79,7 @@ fun loginCliente() {
     if (texto!="Credenciales incorrectas."){
         val user=texto.split(",")
 
-        println("Información del usuario:")
+        println("Información del usuario:\n")
         println("Id Usuario  : "+user[0]+
                 "\nEmail     : "+user[1]+
                 "\nContraseña: "+"*".repeat(user[2].length)+
@@ -70,25 +88,8 @@ fun loginCliente() {
                 "\nSegundo Apellido: "+user[5]+
                 "\nNúmero de móvil : "+user[6])
     }else{
-        println("**** $texto")
+        println("**** $texto ****")
     }
 }
 
-fun main() {
-    val sc = Scanner(System.`in`)
 
-    println("Opción a elegir (registro, login): ")
-    val opcion = sc.nextLine()
-
-    when (opcion.uppercase(Locale.getDefault())) {
-        "REGISTRO" -> {
-            realizarRegistro()
-        }
-        "LOGIN" -> {
-            loginCliente()
-        }
-        else -> {
-            println("Opción no válida")
-        }
-    }
-}

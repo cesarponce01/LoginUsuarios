@@ -60,7 +60,7 @@ fun realizarRegistro() {
     if (texto == "OK") {
         println("Usuario registrado")
     } else {
-        println("El usuario no se ha podido registrar")
+        println("*** Error ya existe este usuario ***")
     }
 }
 
@@ -81,7 +81,7 @@ fun loginCliente() {
     if (texto!="Credenciales incorrectas."){
         val user=texto.split(",")
 
-        println("Información del usuario:")
+        println("Información del usuario:\n")
         println("Id Usuario  : "+user[0]+
                 "\nEmail     : "+user[1]+
                 "\nContraseña: "+"*".repeat(user[2].length)+
@@ -90,7 +90,7 @@ fun loginCliente() {
                 "\nSegundo Apellido: "+user[5]+
                 "\nNúmero de móvil : "+user[6])
     }else{
-        println("**** $texto")
+        println("**** $texto ****")
     }
 }
 

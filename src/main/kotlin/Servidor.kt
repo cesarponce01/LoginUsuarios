@@ -77,9 +77,9 @@ class Servidor(private val socket: DatagramSocket) : Runnable {
             loginStatement.setString(2, pwd)
             resultado = loginStatement.executeQuery()
 
-            if (resultado.next()) {
+            return if (resultado.next()) {
                 //Si el usuario existe devolvemos el usuario
-                return Usuario(
+                Usuario(
                     resultado.getInt("id"),
                     resultado.getString("email"),
                     resultado.getString("pwd"),
@@ -90,7 +90,7 @@ class Servidor(private val socket: DatagramSocket) : Runnable {
                 )
             } else {
                 //En caso de que el usuario no exista, devolvemos un null
-                return null
+                null
             }
         } catch (e: Exception) {
             e.printStackTrace()

@@ -1,7 +1,28 @@
+package Otro
+
 import java.net.DatagramPacket
 import java.net.DatagramSocket
 import java.net.InetAddress
 import java.util.*
+
+fun main() {
+    val sc = Scanner(System.`in`)
+
+    println("Opción a elegir (registro, login): ")
+    val opcion = sc.nextLine()
+
+    when (opcion.uppercase(Locale.getDefault())) {
+        "REGISTRO" -> {
+            realizarRegistro()
+        }
+        "LOGIN" -> {
+            loginCliente()
+        }
+        else -> {
+            println("Opción no válida")
+        }
+    }
+}
 
 fun dataGrama(solicitud:String, email:String, pwd: String):String{
     val dataGramaEnviar = DatagramSocket()
@@ -34,7 +55,7 @@ fun realizarRegistro() {
 
     println("Ingrese su contraseña: ")
     val pwd = sc.nextLine()
-    val texto= Otro.dataGrama("registro", email, pwd)
+    val texto=dataGrama("registro",email, pwd)
 
     if (texto == "OK") {
         println("Usuario registrado")
@@ -56,8 +77,7 @@ fun loginCliente() {
     println("Ingrese su contraseña: ")
     val pwd = sc.nextLine()
 
-    val texto= Otro.dataGrama("login", email, pwd)
-
+    val texto=dataGrama("login",email, pwd)
     if (texto!="Credenciales incorrectas."){
         val user=texto.split(",")
 
@@ -74,21 +94,3 @@ fun loginCliente() {
     }
 }
 
-fun main() {
-    val sc = Scanner(System.`in`)
-
-    println("Opción a elegir (registro, login): ")
-    val opcion = sc.nextLine()
-
-    when (opcion.uppercase(Locale.getDefault())) {
-        "REGISTRO" -> {
-            Otro.realizarRegistro()
-        }
-        "LOGIN" -> {
-            Otro.loginCliente()
-        }
-        else -> {
-            println("Opción no válida")
-        }
-    }
-}

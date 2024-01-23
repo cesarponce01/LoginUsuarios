@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e18c7591-5bdc-4868-962f-a1eded1d39e3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jetbrains_kotlinx_coroutines_core.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Cliente.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Servidor.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Usuario.kt" afterDir="false" />
+    <list default="true" id="e18c7591-5bdc-4868-962f-a1eded1d39e3" name="Changes" comment="sin modificar nada ......">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Otro/Nuevo.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LoginUsuarios.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LoginUsuarios.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Cliente.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Cliente.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,33 +24,45 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2bMCJNtwyOK03KHwuVPMK8tKREr" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Archivos\Fp\CURSO_2\PROYECTO PROCESOS\LoginUsuarios\LoginUsuarios\src\main\kotlin\Otro" />
+    </key>
+  </component>
   <component name="RunManager" selected="Kotlin.ClienteKt">
     <configuration name="ClienteKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ClienteKt" />
+      <module name="LoginUsuarios" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NuevoKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Otro.NuevoKt" />
       <module name="LoginUsuarios" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -72,6 +78,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Kotlin.ClienteKt" />
+        <item itemvalue="Kotlin.NuevoKt" />
         <item itemvalue="Kotlin.ServidorKt" />
       </list>
     </recent_temporary>
@@ -85,6 +92,27 @@
       <option name="presentableId" value="Default" />
       <updated>1706015490892</updated>
     </task>
+    <task id="LOCAL-00001" summary="sin modificar nada ......">
+      <option name="closed" value="true" />
+      <created>1706033370574</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1706033370574</updated>
+    </task>
+    <task id="LOCAL-00002" summary="sin modificar nada ......">
+      <option name="closed" value="true" />
+      <created>1706033399519</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1706033399519</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="sin modificar nada ......" />
+    <option name="LAST_COMMIT_MESSAGE" value="sin modificar nada ......" />
   </component>
 </project>

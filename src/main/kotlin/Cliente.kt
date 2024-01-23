@@ -56,7 +56,7 @@ fun loginCliente() {
     println("Ingrese su contraseña: ")
     val pwd = sc.nextLine()
 
-    val texto= Otro.dataGrama("login", email, pwd)
+    val texto= dataGrama("login", email, pwd)
 
     if (texto!="Credenciales incorrectas."){
         val user=texto.split(",")

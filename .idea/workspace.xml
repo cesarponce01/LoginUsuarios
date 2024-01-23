@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e18c7591-5bdc-4868-962f-a1eded1d39e3" name="Changes" comment="sin modificar nada ......">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Otro/Nuevo.kt" afterDir="false" />
+    <list default="true" id="e18c7591-5bdc-4868-962f-a1eded1d39e3" name="Changes" comment="proyecto finalizado el 23/01/2024 21:49">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Cliente.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Cliente.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +21,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -78,8 +77,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Kotlin.ClienteKt" />
-        <item itemvalue="Kotlin.NuevoKt" />
         <item itemvalue="Kotlin.ServidorKt" />
+        <item itemvalue="Kotlin.NuevoKt" />
       </list>
     </recent_temporary>
   </component>
@@ -108,11 +107,29 @@
       <option name="project" value="LOCAL" />
       <updated>1706033399519</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="proyecto finalizado el 23/01/2024 21:49">
+      <option name="closed" value="true" />
+      <created>1706042886078</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1706042886079</updated>
+    </task>
+    <task id="LOCAL-00004" summary="proyecto finalizado el 23/01/2024 21:49">
+      <option name="closed" value="true" />
+      <created>1706042910760</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1706042910760</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="sin modificar nada ......" />
-    <option name="LAST_COMMIT_MESSAGE" value="sin modificar nada ......" />
+    <MESSAGE value="proyecto finalizado el 21/01/2024 21:48" />
+    <MESSAGE value="proyecto finalizado el 23/01/2024 21:49" />
+    <option name="LAST_COMMIT_MESSAGE" value="proyecto finalizado el 23/01/2024 21:49" />
   </component>
 </project>

@@ -82,10 +82,10 @@ fun main() {
 
     when (opcion.uppercase(Locale.getDefault())) {
         "REGISTRO" -> {
-            Otro.realizarRegistro()
+            realizarRegistro()
         }
         "LOGIN" -> {
-            Otro.loginCliente()
+            loginCliente()
         }
         else -> {
             println("Opción no válida")

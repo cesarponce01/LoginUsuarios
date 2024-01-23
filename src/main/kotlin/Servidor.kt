@@ -22,8 +22,10 @@ class Servidor(private val socket: DatagramSocket) : Runnable {
             val puertoRecibido = paqueteRecibido.port
             val mensaje = String(paqueteRecibido.data, 0, paqueteRecibido.length)
 
-            // Cada mensaje se va a procesar en cada hilo.
-            Thread { procesarMensaje(direccionRecibida, puertoRecibido, mensaje) }.start()
+            // Cada mensaje se va a procesar en un hilo diferente
+            Thread {
+                procesarMensaje(direccionRecibida, puertoRecibido, mensaje)
+            }.start()
         }
     }
 

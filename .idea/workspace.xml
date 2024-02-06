@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e18c7591-5bdc-4868-962f-a1eded1d39e3" name="Changes" comment="debug finalizado">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Server.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Cliente.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Cliente.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Otro/Nuevo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Otro/nuevoCliente.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Otro/nuevoCliente.kt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +56,7 @@
       <recent name="D:\Archivos\Fp\CURSO_2\PROYECTO PROCESOS\LoginUsuarios\LoginUsuarios\src\main\kotlin\Otro" />
     </key>
   </component>
-  <component name="RunManager" selected="Kotlin.NuevoClienteKt">
+  <component name="RunManager">
     <configuration name="ClienteKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ClienteKt" />
       <module name="LoginUsuarios" />
@@ -78,9 +80,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Kotlin.NuevoClienteKt" />
         <item itemvalue="Kotlin.ClienteKt" />
         <item itemvalue="Kotlin.ServidorKt" />
+        <item itemvalue="Kotlin.NuevoClienteKt" />
       </list>
     </recent_temporary>
   </component>

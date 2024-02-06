@@ -76,13 +76,14 @@ fun loginCliente() {
 
     val texto= dataGrama("login", email, pwd)
 
+    //Se limita la visualización de la contraseña por *
     if (texto!="Credenciales incorrectas."){
         val user=texto.split(",")
 
         println("Información del usuario:\n")
         println("Id Usuario  : "+user[0]+
                 "\nEmail     : "+user[1]+
-                "\nContraseña: "+"*".repeat(user[2].length)+
+                "\nContraseña: "+"*".repeat(minOf(12, user[2].length)) + if (user[2].length > 12) "+..." else ""+
                 "\nNombre    : "+user[3]+
                 "\nPrimer Apellido : "+user[4]+
                 "\nSegundo Apellido: "+user[5]+

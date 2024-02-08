@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e18c7591-5bdc-4868-962f-a1eded1d39e3" name="Changes" comment="debug finalizado">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Server.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="e18c7591-5bdc-4868-962f-a1eded1d39e3" name="Changes" comment="Se crea una nueva funcionalidad para encryptar la contraseña del usuario y se guarda en la BBDD.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Cliente.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Cliente.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Otro/nuevoCliente.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Server.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Server.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +54,7 @@
       <recent name="D:\Archivos\Fp\CURSO_2\PROYECTO PROCESOS\LoginUsuarios\LoginUsuarios\src\main\kotlin\Otro" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Kotlin.ClienteKt">
     <configuration name="ClienteKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ClienteKt" />
       <module name="LoginUsuarios" />
@@ -66,6 +64,13 @@
     </configuration>
     <configuration name="NuevoClienteKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Otro.NuevoClienteKt" />
+      <module name="LoginUsuarios" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ServerKt" />
       <module name="LoginUsuarios" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -81,6 +86,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Kotlin.ClienteKt" />
+        <item itemvalue="Kotlin.ServerKt" />
         <item itemvalue="Kotlin.ServidorKt" />
         <item itemvalue="Kotlin.NuevoClienteKt" />
       </list>
@@ -143,7 +149,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706043455726</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Se crea una nueva funcionalidad para encryptar la contraseña del usuario y se guarda en la BBDD.">
+      <option name="closed" value="true" />
+      <created>1707247783680</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1707247783680</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -151,6 +165,7 @@
     <MESSAGE value="proyecto finalizado el 21/01/2024 21:48" />
     <MESSAGE value="proyecto finalizado el 23/01/2024 21:49" />
     <MESSAGE value="debug finalizado" />
-    <option name="LAST_COMMIT_MESSAGE" value="debug finalizado" />
+    <MESSAGE value="Se crea una nueva funcionalidad para encryptar la contraseña del usuario y se guarda en la BBDD." />
+    <option name="LAST_COMMIT_MESSAGE" value="Se crea una nueva funcionalidad para encryptar la contraseña del usuario y se guarda en la BBDD." />
   </component>
 </project>

@@ -4,9 +4,15 @@ import java.net.InetAddress
 import java.security.MessageDigest
 import java.sql.Connection
 import java.sql.DriverManager
-import java.sql.PreparedStatement
-import java.sql.ResultSet
-import java.sql.SQLException
+
+fun main() {
+    val socket = DatagramSocket(6000)
+    println("Arrancamos el servidor.....")
+    //Iniciamos el servidor y ejecutamos la función sobreescrita run()
+    Thread {
+        Server(socket).run()
+    }.start()
+}
 
 class Server(private val socket: DatagramSocket) : Runnable {
 
@@ -23,6 +29,8 @@ class Server(private val socket: DatagramSocket) : Runnable {
             val puertoRecibido = paqueteRecibido.port
             val mensaje = String(paqueteRecibido.data, 0, paqueteRecibido.length)
 
+            println("Mensaje del cliente: $mensaje")
+
             // Cada mensaje se va a procesar en un hilo diferente
             Thread {
                 procesarMensaje(direccionRecibida, puertoRecibido, mensaje)
@@ -30,11 +38,15 @@ class Server(private val socket: DatagramSocket) : Runnable {
         }
     }
 
-
+    /*
+    Envía la respuesta al cliente
+     */
     private fun enviarRespuesta(direccionCliente: InetAddress, puertoCliente: Int, respuesta: String) {
         val enviarData = respuesta.toByteArray()
         val paqueteEnviar = DatagramPacket(enviarData, enviarData.size, direccionCliente, puertoCliente)
         socket.send(paqueteEnviar)
+
+        println("Respuesta al cliente: $respuesta")
     }
 
     private fun obtenerConexionBD(): Connection {
@@ -50,113 +62,65 @@ class Server(private val socket: DatagramSocket) : Runnable {
         val respuesta = when {
             mensaje.startsWith("registro") -> registrarUsuario(mensaje)
             mensaje.startsWith("login") -> loginUsuario(mensaje)
+            mensaje.startsWith("actualizar") -> actualizarUsuario(mensaje)
             else -> "Instrucción no válida"
         }
         // Enviar respuesta al cliente
         enviarRespuesta(direccionRecibida, puertoRecibido, respuesta)
     }
 
-    /*
-    Función que nos permite comprobar si un usuario está o no registrado en la BBDD
-     */
+    private fun comprobarUsuario(email: String, pwd: String?, esRegistro: Boolean): Usuario? {
+        return try {
+            obtenerConexionBD().use { conexionBD ->
+                val consultaSQL = if (esRegistro) {
+                    "SELECT * FROM users WHERE email = ?"
+                } else {
+                    "SELECT * FROM users WHERE email = ? AND pwd = ?"
+                }
 
-    private fun comprobarUsuario(email: String, pwd: String): Usuario? {
-        // Establecemos conexión con la base de datos
-        var conexionBD: Connection? = null
-        var loginStatement: PreparedStatement? = null
-        var resultado: ResultSet? = null
+                conexionBD.prepareStatement(consultaSQL).use { loginStatement ->
+                    loginStatement.setString(1, email)
 
-        try {
-            //Establecemos la conexión con la base de datos
-            conexionBD = obtenerConexionBD()
+                    if (!esRegistro) {
+                        loginStatement.setString(2, hashearPWD(pwd!!))
+                    }
 
-            // Verificamos si el correo electrónico y la contraseña coinciden
-            loginStatement = conexionBD.prepareStatement(
-                "select * from users where email=? and pwd=?"
-            )
-            loginStatement.setString(1, email)
-            loginStatement.setString(2, encryptar(pwd))//Encryptamos la contraseña.
-            resultado = loginStatement.executeQuery()
+                    val resultado = loginStatement.executeQuery()
 
-            return if (resultado.next()) {
-                //Si el usuario existe devolvemos el usuario
-                Usuario(
-                    resultado.getInt("id"),
-                    resultado.getString("email"),
-                    resultado.getString("pwd"),
-                    resultado.getString("nombre"),
-                    resultado.getString("prapellido"),
-                    resultado.getString("sgapellido"),
-                    resultado.getString("movil")
-                )
-            } else {
-                //En caso de que el usuario no exista, devolvemos un null
-                null
+                    if (resultado.next()) {
+                        Usuario(
+                            resultado.getInt("id"),
+                            resultado.getString("email"),
+                            resultado.getString("pwd"),
+                            resultado.getString("nombre"),
+                            resultado.getString("prapellido"),
+                            resultado.getString("sgapellido"),
+                            resultado.getString("movil")
+                        )
+                    } else {
+                        null
+                    }
+                }
             }
         } catch (e: Exception) {
             e.printStackTrace()
-            return null
-        } finally {
-            try {
-                resultado?.close()
-                loginStatement?.close()
-                conexionBD?.close()
-            } catch (e: SQLException) {
-                e.printStackTrace()
-            }
+            null
         }
     }
 
-    /*
-    Función que permite registrar un nuevo usuario en la BBDD
-     */
-    private fun registrarUsuario(mensaje: String): String {
 
-        val cadena = mensaje.split(";")
-        if (cadena.size == 3) {
-            val email = cadena[1]
-            val pwd = cadena[2]
-
-            //Si al comprobar no existe procedemos a registrarlo
-            if (comprobarUsuario(email, pwd) == null) {
-                try {
-                    //Establecemos conexión con la base de datos
-                    val conexionBD = obtenerConexionBD()
-                    val statement: PreparedStatement = conexionBD.prepareStatement(
-                        "INSERT INTO users (email, pwd) VALUES (?, ?)"
-                    )
-                    statement.setString(1, email)
-                    statement.setString(2, encryptar(pwd))
-                    statement.executeUpdate()  // insertamos los nuevos datos del usuario
-                    statement.close()
-                    conexionBD.close()
-                    return "OK"
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                    return "Error al registrar usuario."
-                }
-            } else {
-                return "Usuario ya existe"
-            }
-
-        } else {
-            return "Formato de mensaje incorrecto."
-        }
-    }
-
-    /*
-    Función que permite recuperar los datos del usuario existente de la BBDD
-     */
+   /*
+   Función que permite un login al cliente
+    */
     private fun loginUsuario(mensaje: String): String {
         val cadena = mensaje.split(";")
-
-        if (cadena.size == 3) {
+        return if (cadena.size == 3) {
             val email = cadena[1]
             val pwd = cadena[2]
 
-            val usuario = comprobarUsuario(email, pwd)
+            val usuario = comprobarUsuario(email, pwd, false)
 
-            return if (usuario != null) {
+            if (usuario != null) {
                 "${usuario.id},${usuario.email},${usuario.pwd}," +
                         "${usuario.nombre},${usuario.prapellido}," +
                         "${usuario.sgapellido},${usuario.movil}"
@@ -164,14 +128,45 @@ class Server(private val socket: DatagramSocket) : Runnable {
                 "Credenciales incorrectas."
             }
         } else {
-            return "Error al tramitar la solicitud."
+            "Error al tramitar la solicitud."
         }
     }
 
+   /*
+   Función que permite registrar un usuario
+    */
+    private fun registrarUsuario(mensaje: String): String {
+        val cadena = mensaje.split(";")
+        return if (cadena.size == 3) {
+            val email = cadena[1]
+            val pwd = cadena[2]
+
+            if (comprobarUsuario(email, null, true) == null) {
+                try {
+                    obtenerConexionBD().use { conexionBD ->
+                        val consultaSQL = "INSERT INTO users (email, pwd) VALUES (?, ?)"
+                        conexionBD.prepareStatement(consultaSQL).use { statement ->
+                            statement.setString(1, email)
+                            statement.setString(2, hashearPWD(pwd))
+                            statement.executeUpdate()
+                        }
+                    }
+                    "OK"
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    "Error al registrar usuario."
+                }
+            } else {
+                "Usuario ya existe"
+            }
+        } else {
+            "Formato de mensaje incorrecto."
+        }
+    }
     /*
-    Función que permite encryptar la contraseña proporcionada por el usuario.
+    Función que permite hashear la contraseña proporcionada por el usuario.
      */
-    fun encryptar(texto:String): String{
+    fun hashearPWD(texto:String): String{
 
         val sh512= MessageDigest.getInstance("sha-512")
         //Convertimos el texto en byte
@@ -181,12 +176,41 @@ class Server(private val socket: DatagramSocket) : Runnable {
         val resultadoCorrecto= calcularhash.joinToString (""){"%02x".format(it) }
         return resultadoCorrecto
     }
-}
 
-fun main() {
-    val socket = DatagramSocket(6000)
-    //Iniciamos el servidor y ejecutamos la función sobreescrita run()
-    Thread {
-        Server(socket).run()
-    }.start()
+    /*
+    Función que permite actualizar el usuario según los datos pasados por el cliente
+     */
+    private fun actualizarUsuario(mensaje: String): String {
+        val cadena = mensaje.split(";")
+
+        return if (cadena.size == 6) {
+            try {
+                val userId = cadena[1].toInt()
+                val nuevoNombre = cadena[2]
+                val nuevoPrApellido = cadena[3]
+                val nuevoSgApellido = cadena[4]
+                val nuevoMovil = cadena[5]
+
+                obtenerConexionBD().use { conexionBD ->
+                    val consultaSQL = "update users set nombre=?, prapellido=?, sgapellido=?, movil=? WHERE id=?"
+                    conexionBD.prepareStatement(consultaSQL).use { actualizarStatement ->
+                        actualizarStatement.setString(1, nuevoNombre)
+                        actualizarStatement.setString(2, nuevoPrApellido)
+                        actualizarStatement.setString(3, nuevoSgApellido)
+                        actualizarStatement.setString(4, nuevoMovil)
+                        actualizarStatement.setInt(5, userId)
+
+                        actualizarStatement.executeUpdate()
+                    }
+                }
+                "OK"
+            } catch (e: Exception) {
+                e.printStackTrace()
+                "Error al actualizar usuario."
+            }
+        } else {
+            "Mensaje recibido incorrecto"
+        }
+    }
+
 }

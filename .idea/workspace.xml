@@ -54,7 +54,7 @@
       <recent name="D:\Archivos\Fp\CURSO_2\PROYECTO PROCESOS\LoginUsuarios\LoginUsuarios\src\main\kotlin\Otro" />
     </key>
   </component>
-  <component name="RunManager" selected="Kotlin.ClienteKt">
+  <component name="RunManager">
     <configuration name="ClienteKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ClienteKt" />
       <module name="LoginUsuarios" />
